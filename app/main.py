@@ -16,7 +16,9 @@ def main():
         
         if cmd.startswith("type"):
             # Get the command after type
+            usr_input = cmd.split(" ")[0]
             cmd = cmd.split(" ")[1]
+            
             paths = PATH.split(":")
             cmd_path = None
             
@@ -26,7 +28,7 @@ def main():
                     cmd_path = f"{path}/{cmd}"
 
             if cmd in valid_commands:
-                sys.stdout.write(f"{cmd[5:].strip()} is a shell builtin\n")
+                sys.stdout.write(f"{cmd} is a shell builtin\n")
                 continue
             elif cmd_path:
                 sys.stdout.write(f"{cmd} is {cmd_path}\n")
