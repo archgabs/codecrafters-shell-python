@@ -15,6 +15,8 @@ def main():
         if cmd.startswith("type") and cmd[5:].strip() in valid_commands:
            sys.stdout.write(f"{cmd[5:].strip()} is a shell builtin\n")
            continue 
+        elif cmd.startswith("type"):
+            cmd = cmd[5:].strip()
 
         if cmd[0:4] == "echo":
             sys.stdout.write(f"{cmd[5:]}\n") 
