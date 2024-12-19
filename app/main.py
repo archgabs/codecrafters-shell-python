@@ -43,13 +43,15 @@ def main():
                 
 
             case _:
-                cmd = cmd.split(" ")[1]
+                executable = cmd.split(" ")[0]
+                argument = cmd.split(" ")[1]
+
                 paths = PATH.split(":")
                 
                 # Searchs for executable that matches the command name
                 for path in paths:
-                    if os.path.isfile(f"{path}/{cmd}"):
-                        result = subprocess.run([f"{path}/{cmd}"], shell=True, capture_output=True, text=True).stdout
+                    if os.path.isfile(f"{path}/{executable}"):
+                        result = subprocess.run([f"{path}/{executable}", argument], shell=True, capture_output=True, text=True).stdout
 
                 sys.stdout.write(result) 
 
