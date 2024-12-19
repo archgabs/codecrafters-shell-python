@@ -12,8 +12,8 @@ def main():
         if cmd == "exit 0":
             break
         
-        if cmd.startswith("type") and cmd[5:] in valid_commands:
-           sys.stdout.write(f"{cmd[0:4]} is a shell builtin\n")
+        if cmd.startswith("type") and cmd[5:].strip() in valid_commands:
+           sys.stdout.write(f"{cmd[5:].strip()} is a shell builtin\n")
            continue 
 
         if cmd[0:4] == "echo":
