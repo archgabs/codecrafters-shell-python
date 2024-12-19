@@ -43,7 +43,7 @@ def main():
                 
             case _:
                 cmd_parts = cmd.split(" ")     # Divide o comando
-                if cmd_parts > 1:
+                if len(cmd_parts) > 1:
                     executable = cmd_parts[0]       # Primeiro item é o executável
                     argument = cmd_parts[1]         # Segundo item é o argumento
                     paths = PATH.split(":")
