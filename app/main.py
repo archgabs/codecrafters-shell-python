@@ -3,11 +3,9 @@ import sys
 
 def main():
     sys.stdout.write("$ ")
-    try:
-        input()
-    except:
-        print("Command Not Found.")
 
+    cmd = input()
+    sys.stdout.write(f"invalid_command: {cmd} not found\n") 
 
 if __name__ == "__main__":
     main()
