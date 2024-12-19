@@ -9,6 +9,10 @@ def main():
         
         if cmd == "exit 0":
             break
+        
+        if cmd[0:4] == "echo":
+            sys.stdout.write(f"{cmd[5:]}\n") 
+            continue
 
         sys.stdout.write(f"{cmd}: command not found\n") 
 
