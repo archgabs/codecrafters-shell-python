@@ -1,8 +1,10 @@
 import sys
+import os
 
 
 def main():
     valid_commands = ["echo", "exit", "type",]
+    PATH = os.environ.get("PATH")
 
     while True:
         sys.stdout.write("$ ")
@@ -12,11 +14,23 @@ def main():
         if cmd == "exit 0":
             break
         
-        if cmd.startswith("type") and cmd[5:].strip() in valid_commands:
-           sys.stdout.write(f"{cmd[5:].strip()} is a shell builtin\n")
-           continue 
-        elif cmd.startswith("type"):
-            cmd = cmd[5:].strip()
+        if cmd.startswith("type"):
+            # Get the command after type
+            cmd = cmd.split(" ")[1]
+            paths = PATH.split(":")
+            
+            # Searchs for executable that matches the command name
+            for path in paths:
+                if os.path.isfile(f"{path}/{cmd}"):
+                    cmd_path = f"{path}/{cmd}"
+
+            if cmd in valid_commands:
+                sys.stdout.write(f"{cmd[5:].strip()} is a shell builtin\n")
+                continue
+            elif cmd_path:
+                sys.stdout.write(f"{cmd} is {cmd_path}\n")
+                continue 
+
             sys.stdout.write(f"{cmd}: not found\n") 
             continue
 
