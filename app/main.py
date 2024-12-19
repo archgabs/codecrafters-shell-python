@@ -10,14 +10,14 @@ def main():
         sys.stdout.write("$ ")
         cmd = input()
         
-        match cmd:
+        match cmd.split(" ")[0]:
             case "exit 0":
                 break
 
-            case cmd.startswith("echo"):
+            case "echo":
                 sys.stdout.write(f"{cmd[5:].strip()}\n") 
 
-            case cmd.startswith("type"):
+            case "type":
                 # Get the command after type
                 usr_input = cmd.split(" ")[0]
                 cmd = cmd.split(" ")[1]
@@ -33,18 +33,18 @@ def main():
                 # Tests if string it's a bultin program, else will write it's path
                 if cmd in valid_commands:
                     sys.stdout.write(f"{cmd} is a shell builtin\n")
-                    break
+                    continue 
 
                 if cmd_path:
                     sys.stdout.write(f"{cmd} is {cmd_path}\n")
-                    break
+                    continue 
 
                 sys.stdout.write(f"{cmd}: not found\n") 
-                break
+                
 
             case _:
                 inputs = cmd.split(" ")
-                sys.stdout.write(f"Hello {inputs[1]}! The secret code is 1234.") 
+                sys.stdout.write(f"Hello {inputs[1]}! The secret code is 1234.\n")  
 
 
 if __name__ == "__main__":
