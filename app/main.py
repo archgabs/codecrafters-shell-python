@@ -45,6 +45,7 @@ def main():
             case _:
                 cmd = cmd.split(" ")[1]
                 paths = PATH.split(":")
+                out = None
                 
                 # Searchs for executable that matches the command name
                 for path in paths:
