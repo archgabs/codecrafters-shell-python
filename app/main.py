@@ -50,7 +50,7 @@ def main():
                 # Searchs for executable that matches the command name
                 for path in paths:
                     if os.path.isfile(f"{path}/{cmd}"):
-                        out = subprocess.run([f"{path}/{cmd}"], shell=True, capture_output=True)
+                        out = subprocess.run([f"{path}/{cmd}"], shell=True, capture_output=True).stdout
 
                 sys.stdout.write(out) 
 
