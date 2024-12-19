@@ -41,19 +41,19 @@ def main():
 
                 sys.stdout.write(f"{cmd}: not found\n") 
                 
-
             case _:
-                executable = cmd.split(" ")[0]
-                argument = cmd.split(" ")[1]
-
+                cmd_parts = cmd.split(" ")     # Divide o comando
+                executable = cmd_parts[0]       # Primeiro item é o executável
+                argument = cmd_parts[1]         # Segundo item é o argumento
                 paths = PATH.split(":")
                 
                 # Searchs for executable that matches the command name
                 for path in paths:
                     if os.path.isfile(f"{path}/{executable}"):
-                        result = subprocess.run([f"{path}/{executable}", argument], shell=True, capture_output=True, text=True).stdout
-
-                sys.stdout.write(result) 
+                        result = subprocess.run([f"{path}/{executable}", argument], shell=False, capture_output=True, text=True).stdout
+                        break
+                
+                sys.stdout.write(result)
 
 
 if __name__ == "__main__":
