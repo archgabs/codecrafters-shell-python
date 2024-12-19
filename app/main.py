@@ -12,7 +12,8 @@ def main():
         cmd = input()
         
         match cmd.split(" ")[0]:
-            case "exit 0":
+            case "exit":
+                sys.exit(0)
                 break
 
             case "echo":
