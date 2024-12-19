@@ -17,6 +17,8 @@ def main():
            continue 
         elif cmd.startswith("type"):
             cmd = cmd[5:].strip()
+            sys.stdout.write(f"{cmd}: not found\n") 
+            continue
 
         if cmd[0:4] == "echo":
             sys.stdout.write(f"{cmd[5:]}\n") 
