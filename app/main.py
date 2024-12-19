@@ -1,6 +1,6 @@
 import sys
 import os
-
+import subprocess
 
 def main():
     valid_commands = ["echo", "exit", "type",]
@@ -43,8 +43,16 @@ def main():
                 
 
             case _:
-                inputs = cmd.split(" ")
-                sys.stdout.write(f"Hello {inputs[1]}! The secret code is {inputs[2]}.\n")  
+                cmd = cmd.split(" ")[1]
+                paths = PATH.split(":")
+                
+                # Searchs for executable that matches the command name
+                for path in paths:
+                    if os.path.isfile(f"{path}/{cmd}"):
+                        out = subprocess.run([path], shell=True, capture_output=True)
+                        break
+
+                sys.stdout.write(out) 
 
 
 if __name__ == "__main__":
