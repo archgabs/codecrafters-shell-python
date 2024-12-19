@@ -3,7 +3,10 @@ import sys
 
 def main():
     sys.stdout.write("$ ")
-    input()
+    try:
+        input()
+    except:
+        print("Command Not Found.")
 
 
 if __name__ == "__main__":
