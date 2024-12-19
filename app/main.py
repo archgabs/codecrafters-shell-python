@@ -44,7 +44,7 @@ def main():
 
             case _:
                 inputs = cmd.split(" ")
-                sys.stdout.write(f"Hello {inputs[1]}! The secret code is 1234.\n")  
+                sys.stdout.write(f"Hello {inputs[1]}! The secret code is {input[2]}.\n")  
 
 
 if __name__ == "__main__":
