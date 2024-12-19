@@ -8,6 +8,7 @@ def main():
 
     while True:
         sys.stdout.write("$ ")
+        sys.stdout.flush()
         cmd = input()
         
         match cmd.split(" ")[0]:
