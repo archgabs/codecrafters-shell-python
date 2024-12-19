@@ -18,6 +18,7 @@ def main():
             # Get the command after type
             cmd = cmd.split(" ")[1]
             paths = PATH.split(":")
+            cmd_path = None
             
             # Searchs for executable that matches the command name
             for path in paths:
